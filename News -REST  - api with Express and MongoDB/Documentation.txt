@@ -1,0 +1,45 @@
+The fallowing RestAPI is created using express and nodeJS and mongoDB. 
+It supports : 
+
+    GET http://localhost:3000/news
+
+        returns all of the news in the DATABASE_URL sorted ot filtered
+
+        body {
+            "sortby": {
+                "date":"+",  -  sorts the news in descending order , if you pass "-" it will sort the news in ascending order
+                "title": "+"  -  it will sort the news alphabetically , if you pass "+" it will sort retroalphabetically but the second parametur of
+                },                                    the sortby object will sort only the parameters that have the same date .In oreder to sort them
+            "filterby":{                              by title the "title" property has to be before the date property.In other words the first property
+                "title":"N",                          is with priority
+                "date":"2021-04-16"
+            }
+        }
+    
+    POST http://localhost:3000/news
+
+        body {
+            title: string
+            description: string
+            text: string
+        }
+
+        post a new document to the database 
+
+    GET http://localhost:3000/news/:Id
+
+        returns the specified document with the spacified id
+
+    PATCH http://localhost:3000/news/:id
+
+        body {
+            title: string
+            description: string
+            text: string
+        }
+
+        updates only the passed parts ot the document
+
+    DELETE http://localhost:3000/news/:id
+
+        deletes a document
